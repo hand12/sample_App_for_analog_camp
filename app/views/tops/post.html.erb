@@ -1,0 +1,38 @@
+<div class="display_content_new_page">
+  <div class="section_top">
+    <div class="section_content">
+      <div class="section_title">
+        あなたの感謝を教えてください。
+      </div>
+    </div>
+  </div>
+  <div class="section_main">
+    <div class="section_post_surprise_thanks">
+      <div class="form_panel">
+        <form class="new_surprise_thank" id="new_surprise_thank" enctype="multipart/form-data" action="/surprise_thanks" accept-charset="UTF-8" method="post">
+          <input name="utf8" type="hidden" value="&#x2713;" />
+          <input type="hidden" name="authenticity_token" value="XBiznLIxhQC97X5IqsScX0Som3NIFwdwGgXd0pj8mlPXtTOQI1HS6e+FaXtGhoaR+3KVrpTBjA5tKy6aCg4huA==" />
+          <div class="title_form">
+            <label for="surprise_thank_title">タイトル</label>
+            <input type="text" name="surprise_thank[title]" id="surprise_thank_title" />
+          </div>
+          <div class="user_form">
+            <label for="surprise_thank_dear_name">To</label>
+            <input type="text" name="surprise_thank[dear_name]" id="surprise_thank_dear_name" />さん
+          </div>
+          <div class="image_form">
+            <label for="surprise_thank_image"><i aria-hidden="true" class="fa fa-picture-o"></i></label>
+            <input onchange="previewFile()" type="file" name="surprise_thank[image]" id="surprise_thank_image" />
+          </div>
+          <div id="image_field">
+          </div>
+          <div class="episode_form">
+            <label for="surprise_thank_episode">エピソード</label>
+            <textarea cols="5" name="surprise_thank[episode]" id="surprise_thank_episode"></textarea>
+          </div>
+          <input type="submit" name="commit" value="投稿する" data-disable-with="投稿する" />
+        </form>
+      </div>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,931 @@
+$main_color: #F44336;
+$my_menu_background_gradi_color: #9C27B0;
+$main_light_color: #FFEBEE;
+$sub_color: #009688;
+$text_color: #616161;
+$background-cover: rgba(41, 5, 2, 0.6);
+$background-color-block: #343744;
+$background-light-gray: #F5F5F5;
+
+// font-family: 'Quicksand', sans-serif;
+// font-family: 'Pacifico', cursive;
+// font-family: 'Satisfy', cursive;
+// font-family: 'Julius Sans One', sans-serif;
+
+@mixin center_border_bottom($width, $color) {
+	&:after {
+		content: '';
+		display: block;
+		width: $width;
+		height: 2px;
+		background: $color;
+		margin: 10px auto;
+	}
+}
+
+@mixin center_border_bottom_gradi($width, $height) {
+	&:after {
+		content: '';
+		display: block;
+		width: $width;
+		height: $height;
+		margin: 0 auto;
+		background: linear-gradient(135deg, $main_color, $my_menu_background_gradi_color)
+	}
+}
+
+@mixin thank_card() {
+	.thank_card {
+		margin: 0 50px;
+		position: relative;
+		background: white;
+		box-sizing: border-box;
+		width: 500px;
+		height: 350px;
+		padding: 30px;
+		filter: drop-shadow(0 2px 2px #777);
+		border-radius: 2.5px;
+		white-space: pre-wrap;
+		.thank_header {
+			pointer-events: auto;
+			font-size: 24px;
+			font-weight: bold;
+			margin-bottom: 15px;
+			white-space: nowrap;
+			text-overflow: ellipsis;
+			overflow: hidden;
+			@include center_border_bottom_gradi(100%, 1px);
+			a {
+				color: $text_color;
+				cursor: pointer;
+				transition: 0.2s;
+				&:hover {
+					color: $main_color;
+				}
+			}
+		}
+		.thank_body {
+			overflow: hidden;
+			height: 240px;
+			.thank_to_user {
+				font-weight: bold;
+				margin-bottom: 10px;
+			}
+			.thank_image {
+				position: relative;
+				text-align: center;
+				margin: 0 auto;
+				width: 300px;
+				height: 200px;
+				img {
+					object-fit: cover;
+					width: inherit;
+					height: inherit;
+				}
+				&:before {
+					content: '';
+					width: 0;
+					height: 0;
+					transform: rotate(45deg);
+					position: absolute;
+					top: -20px;
+					right: -20px;
+					border: 15px solid transparent;
+					border-bottom: 15px solid white;
+					filter: drop-shadow(1px -1px 1px #ccc);
+				}
+				&:after {
+					content: '';
+					width: 0;
+					height: 0;
+					transform: rotate(225deg);
+					position: absolute;
+					bottom: -20px;
+					left: -20px;
+					border: 15px solid transparent;
+					border-bottom: 15px solid white;
+					filter: drop-shadow(1px -1px 1px #ccc);
+				}
+			}
+			.thank_text {
+				padding: 10px;
+				p {
+					line-height: 14px;
+					display: inline;
+					border-bottom: 1px dashed lighten($text_color, 50);
+					padding-bottom: 5px;
+				}
+			}
+		}
+		&:after {
+			content: '';
+			display: block;
+			width: 0;
+			height: 0;
+			position: absolute;
+			bottom: -40px;
+			left: 0;
+			right: 0;
+			margin: auto;
+			border-top: 40px solid white;
+			border-right: 40px solid transparent;
+			border-left: 40px solid transparent;
+		}
+	}
+}
+
+@mixin thank_card_menu() {
+	.thank_menu {
+		color: lighten($text_color, 30);
+		text-align: right;
+		font-size: 10px;
+		margin-top: 10px;
+		margin-right: 50px;
+		a {
+			margin-right: 10px;
+		}
+		.thank_date {
+			display: inline-block;
+		}
+	}
+}
+
+@mixin thank_user() {
+	.thank_user {
+		text-align: center;
+		margin-top: 50px;
+		position: relative;
+		z-index: 1;
+		&:after {
+			position: absolute;
+			top: 50px;
+			left: 0;
+			content: '';
+			display: block;
+			width: 100%;
+			height: 2px;
+			background: lighten($text_color, 40);
+			z-index: -1;
+		}
+		.thank_user_image {
+			width: 100px;
+			height: 100px;
+			display: inline-block;
+			position: relative;
+			filter: drop-shadow(0 2px 2px #777);
+			img {
+				position: absolute;
+				top: 0;
+				left: 0;
+				width: inherit;
+				height: inherit;
+				object-fit: cover;
+				border-radius: 50%;
+			}
+			#no_user {
+				position: absolute;
+				top: 0;
+				left: 0;
+				width: inherit;
+				height: inherit;
+				object-fit: cover;
+				border-radius: 50%;
+				font-size: 100px;
+				color: white;
+			}
+			&:after {
+				position: absolute;
+				top: -5px;
+				left: -5px;
+				content: '';
+				width: 110px;
+				height: 110px;
+				border-radius: 50%;
+				z-index: -1;
+				background: linear-gradient(135deg, $main_color, $my_menu_background_gradi_color);
+			}
+		}
+		.thank_user_name {
+			font-size: 14px;
+			padding: 5px;
+		}
+	}
+}
+
+@mixin form() {
+	.form_panel {
+		width: 30%;
+		min-width: 500px;
+		margin: 0 auto;
+		padding: 50px;
+		background: white;
+		box-shadow: 0 2px 8px #777;
+		.title_form {
+			@include title_form();
+		}
+		.user_form {
+			font-size: 20px;
+			margin-bottom: 20px;
+			display: inline-block;
+			label {
+				display: inline-block;
+			}
+			input[type="text"] {
+				font-size: 20px;
+				color: $text_color;
+				font-family: 'Yu Mincho Light','YuMincho','Yu Mincho','游明朝体',sans-serif, YuGothic,'Yu Gothic','Zapfino',sans-serif;
+				display: inline-block;
+				width: 30%;
+				min-width: 200px;
+				margin: 0 20px;
+				border-bottom: 1px solid lighten($text_color, 50);
+			}
+		}
+		.image_form {
+			margin-left: 20px;
+			display: inline-block;
+			vertical-align: center;
+			label {
+				font-size: 24px;
+				cursor: pointer;
+			}
+			input[type="file"] {
+				display: none;
+			}
+		}
+		#image_field {
+			display: none;
+			position: relative;
+			width: 100%;
+			height: auto;
+			margin: 0 auto;
+			text-align: center;
+			img {
+				width: inherit;
+				object-fit: cover;
+			}
+			&:before {
+				content: '';
+				width: 0;
+				height: 0;
+				transform: rotate(45deg);
+				position: absolute;
+				top: -35px;
+				right: -35px;
+				border: 30px solid transparent;
+				border-bottom: 30px solid white;
+				filter: drop-shadow(2px -2px 2px #999);
+			}
+			&:after {
+				content: '';
+				width: 0;
+				height: 0;
+				transform: rotate(225deg);
+				position: absolute;
+				bottom: -35px;
+				left: -35px;
+				border: 30px solid transparent;
+				border-bottom: 30px solid white;
+				filter: drop-shadow(2px -2px 2px #999);
+			}
+		}
+		.episode_form {
+			margin-top: 10px;
+			margin-bottom: 20px;
+			label {
+				display: block;
+				font-size: 20px;
+				margin-bottom: 10px;
+			}
+			textarea {
+				display: inline;
+				width: 100%;
+				height: 10rem;
+				color: $text_color;
+				font-size: 16px;
+				font-family: 'Yu Mincho Light','YuMincho','Yu Mincho','游明朝体',sans-serif, YuGothic,'Yu Gothic','Zapfino',sans-serif;
+				border-bottom: 1px dashed lighten($text_color, 30);
+			}
+		}
+		.name_field {
+			@include title_form($margin_bottom: 30px);
+		}
+		.handle_name_field {
+			@include title_form(16px, 20px, 30px);
+		}
+		.email_field {
+			@include title_form(16px, 20px, 30px);
+		}
+		.password_field {
+			@include title_form(16px, 20px, 30px);
+		}
+		.confirmation_field {
+			@include title_form(16px, 20px, 30px);
+		}
+		.profile_image_field {
+			margin: 0 auto;
+			position: relative;
+			text-align: center;
+			margin-bottom: 50px;
+			label {
+				font-size: 12px;
+				padding: 5px 10px;
+				display: inline-block;
+				border: 1px solid lighten($color: $text_color, $amount: 30);
+				border-radius: 5px;
+				transition: 0.2s;
+				&:hover {
+					color: $main_color;
+					border: 1px solid $main_color;
+					cursor: pointer;
+				}
+			}
+			input[type="file"] {
+				display: none;
+			}
+			#profile_image {
+				width: 200px;
+				height: 200px;
+				margin: 0 auto 30px;
+				position: relative;
+				background: white;
+				border-radius: 50%;
+				filter: drop-shadow(0 4px 8px #ccc);
+				img {
+					z-index: 1;
+					position: absolute;
+					top: 0;
+					left: 0;
+					width: inherit;
+					height: inherit;
+					object-fit: cover;
+					border-radius: 50%;
+				}
+				&:before {
+					content: '';
+					position: absolute;
+					top: -5px;
+					left: -5px;
+					width: calc(100% + 10px);
+					height: calc(100% + 10px);
+					border-radius: 50%;
+					background: linear-gradient(135deg, $main_color, $my_menu_background_gradi_color);
+				}
+				&:after {
+					content: '\f2bd';
+					font-size: 190px;
+					position: absolute;
+					top: 5px;
+					left: 0;
+					width: 100%;
+					height: 100%;
+					border-radius: 50%;
+					font-family: FontAwesome;
+					color: white;
+				}
+			}
+		}
+		input[type="submit"] {
+			color: $text_color;
+			font-family: 'Yu Mincho Light','YuMincho','Yu Mincho','游明朝体',sans-serif, YuGothic,'Yu Gothic','Zapfino',sans-serif;
+			font-size: 24px;
+			display: block;
+			margin: 0 auto;
+			margin-top: 20px;
+			transition: 0.2s;
+			&:hover {
+				color: $main_color;
+				cursor: pointer;
+			}
+		}
+	}
+}
+
+@mixin title_form($label_font_size: 20px, $input_font_size: 24px, $margin_bottom: 20px) {
+	margin-bottom: $margin_bottom;
+	padding-bottom: 10px;
+	label {
+		display: block;
+		font-size: $label_font_size;
+		margin-bottom: 10px;
+	}
+	input[type="text"], input[type="email"], input[type="password"] {
+		display: block;
+		width: 100%;
+		color: $text_color;
+		font-size: $input_font_size;
+		font-family: 'Yu Mincho Light','YuMincho','Yu Mincho','游明朝体',sans-serif, YuGothic,'Yu Gothic','Zapfino',sans-serif;
+		border-bottom: 1px solid lighten($text_color, 50);
+	}
+}
+
+@mixin flash_message($background_color) {
+	z-index: 3;
+	position: fixed;
+	background: $background_color;
+	color: white;
+	width: 100vw;
+	padding: 10px;
+	text-align: center;
+	animation-name: fadeOut;
+	animation-duration: 3s;
+	animation-timing-function: ease-in;
+	animation-fill-mode: forwards;
+}
+@keyframes fadeOut {
+	0% { opacity: 　1; }
+	80% { opacity: 1; }
+	99% { opacity: 0; display: none; z-index: 3 }
+	100% { z-index: 0 }
+}
+
+body {
+	margin: 0;
+	color: $text_color;
+	font-family: 'Yu Mincho Light','YuMincho','Yu Mincho','游明朝体',sans-serif, YuGothic,'Yu Gothic','Zapfino',sans-serif;
+	width: 100vw;
+	min-width: 400px;
+}
+
+input, button, textarea, select {
+  margin: 0;
+  padding: 0;
+  background: none;
+  border: none;
+  border-radius: 0;
+	outline: none;
+	resize: none;
+}
+
+a {
+	color: $text_color;
+	text-decoration: none;
+	transition: 0.2s;
+	&:hover {
+		color: $main_color;
+	}
+}
+
+.link_text {
+	font-size: 28px;
+	text-align: center;
+	display: inline-block;
+	color: $text_color;
+	transition: 0.2s;
+	@include center_border_bottom_gradi(200px, 1px);
+	&:hover {
+		color: $main_color;
+	}
+}
+
+.alert {
+	@include flash_message($main_color);
+}
+.notice {
+	@include flash_message($sub_color);
+}
+#header {
+	position: fixed;
+	width: 100%;
+	z-index: 2;
+	background: white;
+	// box-shadow: 0 1px 2px 0 #999;
+	@include center_border_bottom_gradi(100%, 2px);
+	&:after {
+		content: '';
+		display: block;
+		clear: both;
+	}
+
+	#content_box {
+		width: 80%;
+		margin: 0 auto;
+		display: flex;
+		flex-direction: row;
+		justify-content: space-between;
+		align-items: center;
+		#left_box{
+			#title {
+				padding: 10px;
+				font-family: 'Pacifico', cursive;
+				font-weight: bold;
+				a {
+					transition: 0.2s;
+					color: $text_color;
+					&:hover {
+						color: $main_color;
+						cursor: pointer;
+					}
+				}
+			}
+		}
+		#right_box {
+			.buttons {
+				.button {
+					font-weight: bold;
+					display: inline-block;
+					padding-right: 10px;
+					transition: 0.2s;
+					a {
+						vertical-align: middle;
+					}
+					&:after {
+						margin-left: 10px;
+						content: '';
+						width: 1px;
+						height: 16px;
+						display: inline-block;
+						background: $text_color;
+						transform: rotate(30deg);
+					}
+					&:last-child:after {
+						content: none;
+					}
+					&:hover {
+						color: $main_color;
+						cursor: pointer;
+					}
+				}
+				.current_user_box {
+					vertical-align: middle;
+					position: relative;
+					&:hover {
+						color: $text_color;
+						cursor: default;
+					}
+					img {
+						position: absolute;
+						top: 0;
+						left: -35px;
+						width: 25px;
+						height: 25px;
+						object-fit: cover;
+						border-radius: 50%;
+						vertical-align: middle;
+					}
+				}
+			}
+		}
+	}
+}
+
+#top_view {
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	justify-content: center;
+	position: relative;
+	width: 100vw;
+	height: 600px;
+	background-image: image-url("top_view_image.jpg");
+	background-position: center;
+	&:after {
+		content: '';
+		position: absolute;
+		top: 0;
+		left: 0;
+		width: inherit;
+		height: inherit;
+		background: linear-gradient(135deg, $main_color, $my_menu_background_gradi_color);
+		opacity: 0.8;
+	}
+	#top_title {
+		z-index: 1;
+		padding: 10px;
+		font-family: 'Pacifico', cursive;
+		font-size: 72px;
+		color: white;
+		text-shadow: 0 1px 16px #333;
+	}
+	#top_message {
+		z-index: 1;
+		color: white;
+		text-shadow: 0 1px 16px #333;
+		font-size: 20px;
+	}
+}
+
+.section {
+	padding: 50px;
+	text-align: center;
+	.section_title {
+		margin: 0 auto;
+		font-size: 28px;
+		padding: 10px;
+		text-align: center;
+		@include center_border_bottom_gradi(200px, 1px);
+	}
+	.section_message {
+		margin: 0 auto;
+		font-size: 16px;
+		padding: 10px;
+		text-align: center;
+		line-height: 32px;
+	}
+}
+
+.display_content {
+	padding-top: 50px;
+	width: 100%;
+	height: calc(100vh - 50px);
+	overflow-y: hidden;
+	overflow-x: scroll;
+}
+.display_content_show_page {
+	padding-top: 50px;
+	width: 100%;
+	overflow-y: scroll;
+	overflow-x: hidden;
+}
+.display_content_new_page {
+	padding-top: 50px;
+	width: 100%;
+	overflow-y: scroll;
+	overflow-x: hidden;
+}
+
+.section_top {
+	width: 100%;
+	box-shadow: 0 1px 8px 0 #999;
+	.section_content {
+		margin: 0 auto;
+		padding: 75px 0;
+		width: 80%;
+	}
+	.section_title {
+		position: relative;
+		text-align: left;
+		font-size: 32px;
+		display: inline-block;
+		box-sizing: border-box;
+	}
+}
+
+.section_main {
+	width: 100%;
+	height: 100%;
+	position: relative;
+	display: flex;
+	flex-direction: row;
+	// align-items: center;
+	overflow: scroll;
+	.section_my_menu {
+		width: 400px;
+		height: 100%;
+		background: linear-gradient(135deg, $main_color, $my_menu_background_gradi_color);
+		display: flex;
+		flex-direction: column;
+		justify-content: center;
+		align-items: stretch;
+		justify-content: space-between;
+		.profile_image {
+			height: 40%;
+			display: flex;
+			justify-content: center;
+			align-items: center;
+			img {
+				width: 200px;
+				height: 200px;
+				object-fit: cover;
+				border-radius: 50%;
+				box-shadow: 0 2px 8px 0 black;
+			}
+		}
+		.profile_menu_box {
+			background: white;
+			height: 60%;
+			text-align: center;
+			.profile_name_box {
+				padding: 30px;
+				font-size: 24px;
+				@include center_border_bottom_gradi(100px, 1px);
+				.profile_name {
+					margin-right: 20px;
+				}
+			}
+			.profile_menu_lists {
+				list-style: none;
+				font-size: 14px;
+				padding: 0;
+				.profile_menu_list {
+					margin-bottom: 10px;
+					transition: 0.2s;
+					&:hover {
+						cursor: pointer;
+						color: $main_color;
+					}
+				}	
+			}
+			.post_surprise_thanks {
+				display: inline-block;
+				border-radius: 22px;
+				font-size: 16px;
+				margin: 10px;
+				padding: 10px 20px;
+				color: white;
+				font-weight: normal;
+				background: linear-gradient(135deg, $main_color, $my_menu_background_gradi_color);
+				transition: 0.2s;
+				&:hover {
+					transform: scale(1.1);
+				}
+			}
+		}
+	}
+	.section_time_line {
+		width: calc(100vw - 400px);
+		height: 100%;
+		font-size: 16px;
+		overflow-y: scroll;
+		white-space: nowrap;
+		padding: 50px;
+		box-sizing: border-box;
+		background: $background-light-gray;
+		box-shadow: 2px 2px 16px #999 inset;
+		.thank_content { 
+			display: inline-block;
+			white-space: normal;
+			@include thank_card();
+			@include thank_card_menu();
+			@include thank_user();
+		}
+	}
+	.section_post_surprise_thanks {
+		width: 100%;
+		height: 100%;
+		padding-top: 50px;
+		padding-bottom: 50px; 
+		font-size: 16px;
+		background: $background-light-gray;
+		box-shadow: 0 1px 8px -1px #777 inset;
+		@include form();
+	}
+	.surprise_thanks_card_content {
+		font-size: 16px;
+		width: 100%;
+		background: $background-light-gray;
+		padding-top: 50px;
+		padding-bottom: 50px;
+		.surprise_thanks_card {
+			width: 30%;
+			min-width: 600px;
+			margin: 0 auto;
+			.thank_content { 
+				@include thank_card();
+				@include thank_card_menu();
+				@include thank_user();
+				.thank_user {
+					&:after {
+						display: none;
+					}
+				}
+			}
+		}
+	}
+	.section_new_registration_user {
+		width: 100%;
+		height: 100%;
+		padding-top: 50px;
+		padding-bottom: 50px; 
+		font-size: 16px;
+		background: $background-light-gray;
+		box-shadow: 0 1px 8px -1px #777 inset;
+		@include form();
+	}
+}
+.section_comment {
+	font-size: 16px;
+	width: 100%;
+	padding-top: 50px;
+	padding-bottom: 50px;
+	.comments {
+		width: 30%;
+		min-width: 600px;
+		margin: 0 auto;
+		.comment {
+			margin-bottom: 30px;
+			.comment_user {
+				display: inline-block;
+				margin-right: 50px;
+				img {
+					display: block;
+					width: 75px;
+					height: 75px;
+					object-fit: cover;
+					border-radius: 50%;
+				}
+				.comment_user_name_box {
+					font-size: 12px;
+					padding: 10px;
+					text-align: center;
+					.comment_user_name {
+					}
+					.comment_user_handle_name {
+						font-size: 10px;
+					}
+				}
+			}
+			.comment_text {
+				position: relative;
+				vertical-align: top;
+				display: inline-block;
+				font-size: 14px;
+				line-height: 24px;
+				background: $background-light-gray;
+				border-radius: 2.5px;
+				min-width: 200px;
+				max-width: 400px;
+				padding: 20px;
+				margin-bottom: 30px;
+				p {
+					margin: 0;
+				}
+				&:before {
+					content: '';
+					position: absolute;
+					left: -15px;
+					top: 10px;
+					width: 0;
+					height: 0;
+					border-radius: 50%;
+					transform: rotate(45deg);
+					border-left: 22px solid $background-light-gray;
+					border-right: 22px solid transparent;
+					border-top: 22px solid transparent;
+					border-bottom: 22px solid $background-light-gray;
+				}
+				&:after {
+					content: '';
+					position: absolute;
+					left: -22px;
+					top: 0;
+					width: 0;
+					height: 0;
+					border-radius: 50%;
+					transform: rotate(45deg);
+					border-left: 22px solid white;
+					border-right: 22px solid transparent;
+					border-top: 22px solid transparent;
+					border-bottom: 22px solid white;
+				}
+				.comment_date {
+					font-size: 10px;
+					position: absolute;
+					bottom: -20px;
+					right: 0;
+				}
+				.comment_links {
+					position: absolute;
+					bottom: -20px;
+					left: 0;
+					font-size: 10px;
+					a {
+						color: $text_color;
+						transition: 0.2s;
+						margin-right: 10px;
+						&:hover {
+							color: $main_color;
+						}
+					}
+				}
+				label {
+					display: block;
+					font-size: 12px;
+				}
+				textarea {
+					display: block;
+					width: inherit;
+					height: 100px;
+					margin-bottom: 10px;
+					color: $text_color;
+					font-size: 16px;
+					font-family: 'Yu Mincho Light','YuMincho','Yu Mincho','游明朝体',sans-serif, YuGothic,'Yu Gothic','Zapfino',sans-serif;
+					border-bottom: 1px solid lighten($text_color, 30);
+				}
+				input[type="submit"] {
+					color: $text_color;
+					font-size: 12px;
+					font-family: 'Yu Mincho Light','YuMincho','Yu Mincho','游明朝体',sans-serif, YuGothic,'Yu Gothic','Zapfino',sans-serif;
+					position: absolute;
+					bottom: 10px;
+					left: 20px;
+					transition: 0.2s;
+					&:hover {
+						color: $main_color;
+						cursor: pointer;
+					}
+				}
+			}
+			.comment_form_textarea {
+				padding-top: 10px;
+				width: 400px;
+			}
+		}
+	}
+	.comment_post_form {
+		margin-top: 100px;
+		padding-top: 30px;
+		border-top: 2px solid lighten($text_color, 30);
+		@include form();
+	}
+}
